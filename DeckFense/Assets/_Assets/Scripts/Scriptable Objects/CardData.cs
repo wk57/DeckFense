@@ -11,4 +11,6 @@ public class CardData : ScriptableObject
     public float effectValue;      // daño o porcentaje de ralentización
     public float effectRadius;
     public float cooldown;
+    public float cooldownTime = 3f;
+
 }

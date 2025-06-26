@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
 public class DeckManager : MonoBehaviour
 {
     public static DeckManager Instance;
@@ -10,6 +11,9 @@ public class DeckManager : MonoBehaviour
     public Transform handPanel; // Un layout donde se mostrarán las cartas (Horizontal Layout Group)
 
     public CardData selectedCard;
+
+    private Dictionary<CardData, float> cardCooldowns = new Dictionary<CardData, float>();
+
 
     private void Awake()
     {
@@ -45,4 +49,22 @@ public class DeckManager : MonoBehaviour
     {
         selectedCard = null;
     }
+
+    public bool IsCardOnCooldown(CardData card)
+    {
+        return cardCooldowns.ContainsKey(card) && Time.time < cardCooldowns[card];
+    }
+
+    public void PutCardOnCooldown(CardData card)
+    {
+        cardCooldowns[card] = Time.time + card.cooldownTime;
+    }
+
+    public float GetRemainingCooldown(CardData card)
+    {
+        if (!cardCooldowns.ContainsKey(card)) return 0f;
+        return Mathf.Max(0f, cardCooldowns[card] - Time.time);
+    }
+
+
 }

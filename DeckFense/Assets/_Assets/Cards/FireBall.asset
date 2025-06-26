@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: FireBall
   m_EditorClassIdentifier: 
   cardName: Fire Ball
-  icon: {fileID: 2833043080597125133, guid: c6ac0078f39473048b9f54d791095f35, type: 3}
+  icon: {fileID: 21300000, guid: a56e92a023b57dc4e961d45b499a16df, type: 3}
   effectType: 0
   effectValue: 20
   effectRadius: 1.5
   cooldown: 3
+  cooldownTime: 3
