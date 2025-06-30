@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6806566068421465403}
   - component: {fileID: 7683143295075206691}
-  - component: {fileID: 920985538139072493}
+  - component: {fileID: 8250424420121617452}
   m_Layer: 0
   m_Name: Enemy Small
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974795117516448235}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -1.24, y: 1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 41013190861372579}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &7683143295075206691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   pathPoints: []
   speed: 2
   maxHealth: 100
---- !u!136 &920985538139072493
+--- !u!136 &8250424420121617452
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,10 +68,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5643164
-  m_Height: 1.7568396
+  m_Radius: 1.08
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0.059376, y: 0.033746243, z: 0.07758486}
+  m_Center: {x: 0.24, y: 0.84, z: 0}
 --- !u!1 &8328437550174308211
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 8328437550174308211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

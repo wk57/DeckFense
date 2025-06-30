@@ -19,7 +19,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, enemyPrefab.transform.rotation);
             EnemyController controller = enemy.GetComponent<EnemyController>();
             controller.pathPoints = pathPoints; // Asigna los waypoints
             yield return new WaitForSeconds(spawnDelay);
