@@ -29,7 +29,6 @@ public class CardEffectHandler : MonoBehaviour
     {
         Debug.Log("Lanzando carta: " + cardData.cardName + " en " + position);
 
-        // FX visual
         if (explosionEffectPrefab != null)
             Instantiate(explosionEffectPrefab, position, Quaternion.identity);
 
@@ -39,11 +38,23 @@ public class CardEffectHandler : MonoBehaviour
             EnemyController enemy = hit.GetComponent<EnemyController>();
             if (enemy != null)
             {
-                if (cardData.effectType == CardEffectType.DamageArea)
-                    enemy.TakeDamage(cardData.effectValue);
-                else if (cardData.effectType == CardEffectType.SlowArea)
-                    enemy.ApplySlow(0.5f, 2f); // luego hacemos bien esta lógica
+                switch (cardData.effectType)
+                {
+                    case CardEffectType.DamageArea:
+                        enemy.TakeDamage(cardData.effectValue);
+                        break;
+
+                    case CardEffectType.SlowArea:
+                        enemy.ApplySlow(cardData.slowFactor, cardData.effectDuration);
+                        break;
+
+                    case CardEffectType.SlowAndDamageArea:
+                        enemy.TakeDamage(cardData.effectValue);
+                        enemy.ApplySlow(cardData.slowFactor, cardData.effectDuration);
+                        break;
+                }
             }
         }
     }
+
 }

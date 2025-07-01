@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7683143295075206691}
   - component: {fileID: 8250424420121617452}
   m_Layer: 0
-  m_Name: Enemy Small
+  m_Name: Enemy Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints: []
-  speed: 2
-  maxHealth: 100
-  data: {fileID: 11400000, guid: 9078a5426be1ee24f92bf74dba93304f, type: 2}
+  speed: 1
+  maxHealth: 1
+  data: {fileID: 11400000, guid: 83292bda45f96e14c99f168b4c3ba479, type: 2}
 --- !u!136 &8250424420121617452
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: f8b30c2afe165d645b54d500a9c30862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

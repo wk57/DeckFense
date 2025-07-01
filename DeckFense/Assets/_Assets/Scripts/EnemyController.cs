@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class EnemyController : MonoBehaviour
 {
+    public System.Action onDeath;
+
     public Transform[] pathPoints; // Se asigna desde otro script
     public float speed = 2f;
     public float maxHealth = 100f;
@@ -10,6 +13,8 @@ public class EnemyController : MonoBehaviour
     private float originalSpeed;
     private float currentSpeed;
     private bool isSlowed = false;
+
+    public EnemyData data;
 
 
     private int currentPoint = 0;
@@ -53,12 +58,17 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        // Efecto de muerte o partículas (opcional)
         Debug.Log(gameObject.name + " ha muerto.");
 
-        // Aquí podrías devolverlo al pool más adelante
+        //Aumentar puntaje
+        GameManager.Instance.playerScore += 10; 
+        GameManager.Instance.UpdateUI();
+        GameManager.Instance.playerScore += data.scoreValue;
+        onDeath?.Invoke();
+
         Destroy(gameObject);
     }
+
 
     public void ApplySlow(float slowFactor, float duration)
     {

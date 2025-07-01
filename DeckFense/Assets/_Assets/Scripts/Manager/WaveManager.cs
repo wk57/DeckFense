@@ -1,28 +1,55 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
+
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Transform[] pathPoints; // El mismo arreglo que usas en EnemyController
-    public Transform spawnPoint;   // Punto donde aparece el enemigo
+    public Transform[] pathPoints;
+    public List<EnemyData> enemyTypes = new List<EnemyData>();
+    public float spawnInterval = 1f;
+    private int enemiesAlive = 0;
+    public GameObject enemyPrefab;   
 
-    public int enemiesPerWave = 5;
-    public float spawnDelay = 1f;
 
-    public void StartWave()
+    public void StartWave(int enemyCount)
     {
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnEnemies(enemyCount));
     }
+   
 
-    IEnumerator SpawnEnemies()
+    private IEnumerator SpawnEnemies(int count)
     {
-        for (int i = 0; i < enemiesPerWave; i++)
+        enemiesAlive = count;
+
+        for (int i = 0; i < count; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, enemyPrefab.transform.rotation);
-            EnemyController controller = enemy.GetComponent<EnemyController>();
-            controller.pathPoints = pathPoints; // Asigna los waypoints
-            yield return new WaitForSeconds(spawnDelay);
+            EnemyData selectedEnemyData = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)];
+
+            GameObject newEnemy = Instantiate(selectedEnemyData.enemyPrefab, pathPoints[0].position, Quaternion.identity);
+            EnemyController ec = newEnemy.GetComponent<EnemyController>();
+
+            // Asigna sus valores desde EnemyData
+            ec.data = selectedEnemyData;
+            ec.pathPoints = pathPoints;
+            ec.speed = selectedEnemyData.speed;
+            ec.maxHealth = selectedEnemyData.health;
+            ec.onDeath += OnEnemyDeath;
+
+            yield return new WaitForSeconds(1f); // Delay entre enemigos
         }
     }
+
+    private void OnEnemyDeath()
+    {
+        enemiesAlive--;
+        if (enemiesAlive <= 0)
+        {
+            GameManager.Instance.currentWave++;
+            GameManager.Instance.StartNextWave();
+        }
+    }
+
+
 }
