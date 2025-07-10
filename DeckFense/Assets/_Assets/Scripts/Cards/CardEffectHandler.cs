@@ -30,7 +30,10 @@ public class CardEffectHandler : MonoBehaviour
 
         // Efecto visual único por carta
         if (cardData.visualEffectPrefab != null)
-            Instantiate(cardData.visualEffectPrefab, position, Quaternion.identity);
+        {
+            GameObject fx = Instantiate(cardData.visualEffectPrefab, position, Quaternion.identity);
+            Destroy(fx, cardData.visualEffectDuration); // se destruye tras x segundos
+        }
 
         // Aplicar efecto a los enemigos en el área
         Collider[] hits = Physics.OverlapSphere(position, cardData.effectRadius);
