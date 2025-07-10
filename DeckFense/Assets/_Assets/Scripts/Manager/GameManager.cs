@@ -1,15 +1,16 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public WaveManager waveManager;
 
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI scoreTextUI;
-    public TextMeshProUGUI waveText;    
+    public Text healthText;
+    public Text scoreTextUI;
+    public Text waveText;    
 
     public GameObject gameOverPanel;
     public TMPro.TextMeshProUGUI scoreText;

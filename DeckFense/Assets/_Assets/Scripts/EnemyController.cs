@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
 
     public EnemyData data;
 
+    private Animator animator;
+    private bool isDying = false;
+
 
     private int currentPoint = 0;
 
@@ -25,6 +28,7 @@ public class EnemyController : MonoBehaviour
         currentHealth = maxHealth;
         originalSpeed = speed; // usa tu variable de velocidad original
         currentSpeed = originalSpeed;
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -58,13 +62,32 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log(gameObject.name + " ha muerto.");
+        if (isDying) return;
+        isDying = true;
 
-        //Aumentar puntaje
-        GameManager.Instance.playerScore += 10; 
-        GameManager.Instance.UpdateUI();
         GameManager.Instance.playerScore += data.scoreValue;
+        GameManager.Instance.UpdateUI();
         onDeath?.Invoke();
+
+        // Activar animación de muerte
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+            StartCoroutine(DeathSequence());
+        }
+        else
+        {
+            Destroy(gameObject); // Si no hay animador, destruir de inmediato
+        }
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        // Esperar un frame para asegurar que el Animator procese el trigger
+        yield return null;
+
+        // Esperar duración real de la animación (ajústala según tu clip)
+        yield return new WaitForSeconds(1.5f);
 
         Destroy(gameObject);
     }

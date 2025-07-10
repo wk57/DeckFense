@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arcane Ice
   m_EditorClassIdentifier: 
   cardName: Arcane Ice
-  icon: {fileID: 21300000, guid: 8525cc44e3fa00b4187c0465c27cb74f, type: 3}
+  icon: {fileID: 21300000, guid: fbce400fecaa0ea469203e8dd1fce4bd, type: 3}
   effectType: 2
   effectValue: 40
   effectRadius: 3

@@ -27,7 +27,10 @@ public class WaveManager : MonoBehaviour
         {
             EnemyData selectedEnemyData = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)];
 
-            GameObject newEnemy = Instantiate(selectedEnemyData.enemyPrefab, pathPoints[0].position, Quaternion.identity);
+            GameObject newEnemy = Instantiate(
+                selectedEnemyData.enemyPrefab,
+                pathPoints[0].position,
+                selectedEnemyData.enemyPrefab.transform.rotation);
             EnemyController ec = newEnemy.GetComponent<EnemyController>();
 
             // Asigna sus valores desde EnemyData
