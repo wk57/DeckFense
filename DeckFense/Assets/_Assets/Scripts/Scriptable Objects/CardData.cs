@@ -13,6 +13,8 @@ public class CardData : ScriptableObject
     //public float cooldown;
     public float cooldownTime = 3f;
 
+    public GameObject visualEffectPrefab;
+
     public float slowFactor = 0.5f;     // Solo aplica si hay ralentización
     public float effectDuration = 2f;   // Duración de la ralentización
 

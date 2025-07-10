@@ -17,5 +17,7 @@ MonoBehaviour:
   effectType: 1
   effectValue: 0.5
   effectRadius: 1.5
-  cooldown: 3
   cooldownTime: 3
+  visualEffectPrefab: {fileID: 4139998543852463225, guid: 56716db4f512e034a90287054292418d, type: 3}
+  slowFactor: 0.5
+  effectDuration: 2

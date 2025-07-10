@@ -3,7 +3,6 @@ using UnityEngine;
 public class CardEffectHandler : MonoBehaviour
 {
     public LayerMask groundLayer;
-    public GameObject explosionEffectPrefab; // un FX o marcador visual
 
     private void Update()
     {
@@ -29,9 +28,11 @@ public class CardEffectHandler : MonoBehaviour
     {
         Debug.Log("Lanzando carta: " + cardData.cardName + " en " + position);
 
-        if (explosionEffectPrefab != null)
-            Instantiate(explosionEffectPrefab, position, Quaternion.identity);
+        // Efecto visual único por carta
+        if (cardData.visualEffectPrefab != null)
+            Instantiate(cardData.visualEffectPrefab, position, Quaternion.identity);
 
+        // Aplicar efecto a los enemigos en el área
         Collider[] hits = Physics.OverlapSphere(position, cardData.effectRadius);
         foreach (var hit in hits)
         {
@@ -56,5 +57,4 @@ public class CardEffectHandler : MonoBehaviour
             }
         }
     }
-
 }
